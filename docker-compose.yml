@@ -1,0 +1,81 @@
+version: '3.5'
+
+services:
+  host:
+    image: vitruviantech/machete-platform
+    restart: unless-stopped
+    command: npm run start
+    working_dir: /srv
+    depends_on:
+      - db
+    volumes:
+      # Environment
+      - ./.env:/srv/.env
+      - ./.ssh:/srv/.ssh
+      - ./.npm:/srv/.npm
+      # Logs
+      - ./log:/srv/log
+      # Bundles
+      - ./packages:/srv/packages
+      # Development
+      - ${MNT0:-.mnt}:/bundles/0
+      - ${MNT1:-.mnt}:/bundles/1
+      - ${MNT2:-.mnt}:/bundles/2
+      - ${MNT3:-.mnt}:/bundles/3
+      - ${MNT4:-.mnt}:/bundles/4
+      - ${MNT5:-.mnt}:/bundles/5
+      - ${MNT6:-.mnt}:/bundles/6
+      - ${MNT7:-.mnt}:/bundles/7
+      - ${MNT8:-.mnt}:/bundles/8
+      - ${MNT9:-.mnt}:/bundles/9
+    environment:
+      CONTAINER: 1
+      LOG_LEVEL: ${LOG_LEVEL:-error}
+      ENV: ${ENV:-}
+      DEBUG: ${DEBUG:-}
+      CONFIG: ${CONFIG:-}
+      PORT: ${PORT:-8080}
+      DB_HOST: ${DB_HOST:-db}
+      DB_USER: ${DB_USER:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-root}
+      DB_PORT: ${DB_PASSWORD:-3306}
+      SERVICE_PROTOCOL: ${SERVICE_PROTOCOL:-}
+      SERVICE_HOST: ${SERVICE_HOST:-}
+      SERVICE_PORT: ${SERVICE_PORT:-}
+      SERVICE_NAMESPACE: ${SERVICE_NAMESPACE:-}
+      SOCKET_NAMESPACE: ${SOCKET_NAMESPACE:-}
+      SESSION_SECRET: ${SESSION_SECRET:-}
+      SESSION_MAX_AGE: ${SESSION_MAX_AGE:-}
+    logging:
+      options:
+        max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
+    ports:
+      - "${IP:-0.0.0.0}:${PORT:-8080}:${PORT:-8080}"
+      - "${IP:-0.0.0.0}:${MDS_PORT:-8081}:${MDS_PORT:-8081}"
+      - "${IP:-0.0.0.0}:${WDS_PORT:-8082}:${WDS_PORT:-8082}"
+    networks:
+      machete:
+        aliases:
+          - host
+
+  db:
+    image: mariadb
+    restart: unless-stopped
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MYSQL_USER: ${DB_USER:-root}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
+    logging:
+      options:
+        max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
+    ports:
+      - "${DB_EXTERNAL_PORT:-3306}:3306"
+    networks:
+      machete:
+        aliases:
+          - db
+
+networks:
+  machete:

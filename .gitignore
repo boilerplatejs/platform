@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.idea/
+.ssh/
+.npm/
+.mnt/
+node_modules/
+log/
+data/
+packages/
+*.iml
+package-lock.json
+npm-debug.log
