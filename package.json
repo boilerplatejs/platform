@@ -1,12 +1,12 @@
 {
-  "name": "@vitruvian-tech/machete-platform",
-  "description": "Machete™ Theme Platform",
+  "name": "@boilerplatejs/platform",
+  "description": "App Development Platform for Marketers by VitruvianTech®",
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/VitruvianTech)",
   "license": "SEE LICENSE IN LICENSE",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VitruvianTech/machete-platform"
+    "url": "https://github.com/BoilerplateJS/platform"
   },
   "homepage": "https://vitruvian.tech",
   "keywords": [
@@ -30,7 +30,9 @@
     "app",
     "framework",
     "platform",
-    "Machete"
+    "BoilerplateJS",
+    "boilerplate",
+    "js"
   ],
   "engines": {
     "node": "10.13.0"

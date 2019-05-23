@@ -1,4 +1,6 @@
-# Machete™ Theme Platform
+# BoilerplateJS™
+
+### App Development Platform for Marketers by VitruvianTech®
 
 `docker-compose up [-d]`
 
