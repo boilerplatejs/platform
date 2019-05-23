@@ -7,7 +7,7 @@
 node_modules/
 log/
 data/
-packages/
+bundles/
 *.iml
 package-lock.json
 npm-debug.log

@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   host:
-    image: boilerplatejs/platform
+    image: vitruviantech/boilerplatejs
     restart: unless-stopped
     command: npm run start
     working_dir: /srv
@@ -16,7 +16,7 @@ services:
       # Logs
       - ./log:/srv/log
       # Bundles
-      - ./packages:/srv/packages
+      - ./bundles:/srv/packages
       # Development
       - ${MNT0:-.mnt}:/bundles/0
       - ${MNT1:-.mnt}:/bundles/1
