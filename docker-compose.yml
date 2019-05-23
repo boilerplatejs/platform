@@ -7,7 +7,7 @@ services:
     command: npm run start
     working_dir: /srv
     depends_on:
-      - db
+      - data
     volumes:
       # Environment
       - ./.env:/srv/.env
@@ -35,7 +35,7 @@ services:
       DEBUG: ${DEBUG:-}
       CONFIG: ${CONFIG:-}
       PORT: ${PORT:-8080}
-      DB_HOST: ${DB_HOST:-db}
+      DB_HOST: ${DB_HOST:-data}
       DB_USER: ${DB_USER:-root}
       DB_PASSWORD: ${DB_PASSWORD:-root}
       DB_PORT: ${DB_PASSWORD:-3306}
@@ -51,14 +51,14 @@ services:
         max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
     ports:
       - "${IP:-0.0.0.0}:${PORT:-8080}:${PORT:-8080}"
-      - "${IP:-0.0.0.0}:${MDS_PORT:-8081}:${MDS_PORT:-8081}"
+      - "${IP:-0.0.0.0}:${BDS_PORT:-8081}:${BDS_PORT:-8081}"
       - "${IP:-0.0.0.0}:${WDS_PORT:-8082}:${WDS_PORT:-8082}"
     networks:
       boilerplatejs:
         aliases:
           - host
 
-  db:
+  data:
     image: mariadb
     restart: unless-stopped
     volumes:
@@ -75,7 +75,7 @@ services:
     networks:
       boilerplatejs:
         aliases:
-          - db
+          - data
 
 networks:
   boilerplatejs:
