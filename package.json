@@ -2,7 +2,7 @@
   "name": "@boilerplatejs/platform",
   "description": "App Development Platform for Marketers by VitruvianTech®",
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/VitruvianTech)",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "BSD-3-Clause",
   "version": "1.0.0",
   "repository": {
     "type": "git",
