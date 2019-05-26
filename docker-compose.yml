@@ -13,6 +13,7 @@ services:
       - ./.env:/srv/.env
       - ./.ssh:/srv/.ssh
       - ./.npm:/srv/.npm
+      - ./.rmq:/srv/.git
       # Logs
       - ./log:/srv/log
       # Bundles
