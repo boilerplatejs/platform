@@ -32,6 +32,7 @@ services:
     environment:
       CONTAINER: 1
       LOG_LEVEL: ${LOG_LEVEL:-error}
+      LICENSE: ${LICENSE:-}
       ENV: ${BUNDLES:-}
       DEBUG: ${DEBUG:-}
       CONFIG: ${CONFIG:-}
