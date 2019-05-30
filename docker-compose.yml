@@ -1,39 +1,41 @@
 version: '3.5'
 
 services:
-  host:
+  app:
     image: vitruviantech/boilerplatejs
     restart: unless-stopped
     command: npm run start
-    working_dir: /srv
+    working_dir: /app
     depends_on:
       - data
     volumes:
       # Environment
-      - ./.env:/srv/.env
-      - ./.ssh:/srv/.ssh
-      - ./.npm:/srv/.npm
-      - ./.rmq:/srv/.git
+      - ./.env:/app/.env
+      - ./.ssh:/app/.ssh
+      - ./.npm:/app/.npm
+      - ./.rmq:/app/.git
       # Logs
-      - ./log:/srv/log
-      # Bundles
-      - ./bundles:/srv/packages
-      # Development
-      - ${MNT0:-.mnt}:/bundles/0
-      - ${MNT1:-.mnt}:/bundles/1
-      - ${MNT2:-.mnt}:/bundles/2
-      - ${MNT3:-.mnt}:/bundles/3
-      - ${MNT4:-.mnt}:/bundles/4
-      - ${MNT5:-.mnt}:/bundles/5
-      - ${MNT6:-.mnt}:/bundles/6
-      - ${MNT7:-.mnt}:/bundles/7
-      - ${MNT8:-.mnt}:/bundles/8
-      - ${MNT9:-.mnt}:/bundles/9
+      - ./log:/app/log
+      # Dependencies
+      - /app/node_modules
+      # Local Bundle Packages
+      - ./packages:/app/packages
+      # Development Bundles
+      - ${MNT0:-.mnt}:/mnt/0
+      - ${MNT1:-.mnt}:/mnt/1
+      - ${MNT2:-.mnt}:/mnt/2
+      - ${MNT3:-.mnt}:/mnt/3
+      - ${MNT4:-.mnt}:/mnt/4
+      - ${MNT5:-.mnt}:/mnt/5
+      - ${MNT6:-.mnt}:/mnt/6
+      - ${MNT7:-.mnt}:/mnt/7
+      - ${MNT8:-.mnt}:/mnt/8
+      - ${MNT9:-.mnt}:/mnt/9
     environment:
       CONTAINER: 1
       LOG_LEVEL: ${LOG_LEVEL:-error}
       LICENSE: ${LICENSE:-}
-      ENV: ${BUNDLES:-}
+      ENV: ${ENV:-}
       DEBUG: ${DEBUG:-}
       CONFIG: ${CONFIG:-}
       PORT: ${PORT:-8080}
@@ -58,7 +60,7 @@ services:
     networks:
       boilerplatejs:
         aliases:
-          - host
+          - app
 
   data:
     image: mariadb
