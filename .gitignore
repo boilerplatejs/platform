@@ -5,10 +5,8 @@
 .ssh/
 .npm/
 .mnt/
-node_modules/
+.pkg/
 log/
-data/
-packages/
 *.iml
 package-lock.json
 npm-debug.log

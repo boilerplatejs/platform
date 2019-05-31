@@ -13,13 +13,14 @@ services:
       - ./.env:/app/.env
       - ./.ssh:/app/.ssh
       - ./.npm:/app/.npm
+      - ./.pkg:/app/.pkg
       - ./.rmq:/app/.git
       # Logs
       - ./log:/app/log
       # Dependencies
       - /app/node_modules
       # Local Bundle Packages
-      - ./packages:/app/packages
+      - /app/packages
       # Development Bundles
       - ${MNT0:-.mnt}:/mnt/0
       - ${MNT1:-.mnt}:/mnt/1
@@ -66,16 +67,16 @@ services:
     image: mariadb
     restart: unless-stopped
     volumes:
-      - ./data:/var/lib/mysql
+      - /var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
-      MYSQL_USER: ${DB_USER:-root}
+      MYSQL_USER: ${DB_USER:-boilerplate}
       MYSQL_PASSWORD: ${DB_PASSWORD:-root}
     logging:
       options:
         max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
     ports:
-      - "${DB_EXTERNAL_PORT:-3306}:3306"
+      - "${DB_PORT_EXTERNAL:-3306}:3306"
     networks:
       boilerplatejs:
         aliases:
