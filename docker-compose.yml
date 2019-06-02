@@ -1,13 +1,13 @@
 version: '3.5'
 
 services:
-  app:
+  boilerplatejs_host:
     image: vitruviantech/boilerplatejs
     restart: unless-stopped
     command: npm run start
     working_dir: /app
     depends_on:
-      - data
+      - boilerplatejs_data
     volumes:
       # Environment
       - ./.env:/app/.env
@@ -40,7 +40,7 @@ services:
       DEBUG: ${DEBUG:-}
       CONFIG: ${CONFIG:-}
       PORT: ${PORT:-8080}
-      DB_HOST: ${DB_HOST:-data}
+      DB_HOST: ${DB_HOST:-boilerplatejs_data}
       DB_USER: ${DB_USER:-root}
       DB_PASSWORD: ${DB_PASSWORD:-root}
       DB_PORT: ${DB_PASSWORD:-3306}
@@ -61,9 +61,9 @@ services:
     networks:
       boilerplatejs:
         aliases:
-          - app
+          - boilerplatejs_host
 
-  data:
+  boilerplatejs_data:
     image: mariadb
     restart: unless-stopped
     volumes:
@@ -80,7 +80,7 @@ services:
     networks:
       boilerplatejs:
         aliases:
-          - data
+          - boilerplatejs_data
 
 networks:
   boilerplatejs:
