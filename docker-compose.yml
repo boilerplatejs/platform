@@ -12,13 +12,12 @@ services:
       # Environment
       - ./.env:/app/.env
       - ./.ssh:/app/.ssh
-      - ./.npm:/app/.npm
       - ./.pkg:/app/.pkg
-      - ./.rmq:/app/.git
       # Logs
       - ./log:/app/log
       # Dependencies
       - /app/node_modules
+      - /app/.npm
       # Local Bundle Packages
       - /app/packages
       # Development Bundles
