@@ -34,11 +34,6 @@
     "boilerplate",
     "js"
   ],
-  "scripts": {
-    "clean": "rm -rf .pkg",
-    "start": "docker-compose up",
-    "stop": "docker-compose stop"
-  },
   "engines": {
     "node": "10.13.0"
   }

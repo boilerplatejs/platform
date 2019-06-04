@@ -12,14 +12,13 @@ services:
       # Environment
       - ./.env:/app/.env
       - ./.ssh:/app/.ssh
-      - ./.pkg:/app/.pkg
       # Logs
       - ./log:/app/log
       # Dependencies
       - /app/node_modules
       - /app/.npm
-      # Local Bundle Packages
-      - /app/packages
+      # Bundle Syncing
+      - /app/.git
       # Development Bundles
       - ${MNT0:-.mnt}:/mnt/0
       - ${MNT1:-.mnt}:/mnt/1
@@ -34,6 +33,7 @@ services:
     environment:
       CONTAINER: 1
       LOG_LEVEL: ${LOG_LEVEL:-error}
+      CLEAN: ${CLEAN:-}
       LICENSE: ${LICENSE:-}
       ENV: ${ENV:-}
       DEBUG: ${DEBUG:-}
@@ -50,6 +50,9 @@ services:
       SOCKET_NAMESPACE: ${SOCKET_NAMESPACE:-}
       SESSION_SECRET: ${SESSION_SECRET:-}
       SESSION_MAX_AGE: ${SESSION_MAX_AGE:-}
+      GIT_URL: ${GIT_URL:-}
+      GIT_NAME: ${GIT_NAME:-}
+      GIT_EMAIL: ${GIT_EMAIL:-}
     logging:
       options:
         max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
