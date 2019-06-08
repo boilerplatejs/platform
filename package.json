@@ -36,5 +36,8 @@
   ],
   "engines": {
     "node": "10.13.0"
+  },
+  "scripts": {
+    "install": "docker load -i vitruviantech-boilerplatejs-${npm_package_version}.tar"
   }
 }

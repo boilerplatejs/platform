@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   boilerplatejs_host:
-    image: vitruviantech/boilerplatejs
+    image: vitruviantech/boilerplatejs:${VERSION:-latest}
     restart: unless-stopped
     command: npm run start
     working_dir: /app
@@ -35,7 +35,8 @@ services:
       LOG_LEVEL: ${LOG_LEVEL:-error}
       CLEAN: ${CLEAN:-}
       LICENSE: ${LICENSE:-}
-      ENV: ${ENV:-}
+      BUNDLES_DEV: ${BUNDLES_DEV:-}
+      BUNDLES_PROD: ${BUNDLES_PROD:-}
       DEBUG: ${DEBUG:-}
       CONFIG: ${CONFIG:-}
       PORT: ${PORT:-8080}
