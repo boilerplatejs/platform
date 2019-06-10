@@ -4,7 +4,7 @@
 .ssh/
 .mnt/
 log/
+images/
 *.iml
 package-lock.json
 npm-debug.log
-vitruviantech-boilerplatejs-*.tar

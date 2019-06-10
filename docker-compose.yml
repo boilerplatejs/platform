@@ -85,5 +85,26 @@ services:
         aliases:
           - boilerplatejs_data
 
+  boilerplatejs_admin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - boilerplatejs_data
+    environment:
+      PMA_PORT: 3306
+      PMA_HOST: ${DB_HOST:-boilerplatejs_data}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MYSQL_USER: ${DB_USER:-boilerplate}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
+    logging:
+      options:
+        max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
+    ports:
+      - "${ADMIN_PORT:-8083}:80"
+    networks:
+      boilerplatejs:
+        aliases:
+          - boilerplatejs_admin
+
 networks:
   boilerplatejs:
