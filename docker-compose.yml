@@ -33,6 +33,7 @@ services:
     environment:
       CONTAINER: 1
       PORT: 80
+      CLEAN: ${CLEAN:-}
       LOG_LEVEL: ${LOG_LEVEL:-error}
       DB_HOST: ${DB_HOST:-boilerplatejs_data}
       VIRTUAL_HOST: ${DOMAIN:-}
