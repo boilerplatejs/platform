@@ -2,9 +2,9 @@
 .env
 .idea/
 .ssh/
-.mnt/
-log/
+.bundles/
 images/
+log/
 *.iml
 package-lock.json
 npm-debug.log

@@ -43,8 +43,7 @@ services:
         max-size: ${LOGGING_OPTIONS_MAX_SIZE:-200k}
     ports:
       - "${IP:-0.0.0.0}:${PORT:-8080}:80"
-      - "${IP:-0.0.0.0}:${PORT_BDS:-8081}:81"
-      - "${IP:-0.0.0.0}:${PORT_WDS:-8082}:82"
+      - "${IP:-0.0.0.0}:${WEBPACK_PORT:-8081}:${WEBPACK_PORT:-8081}"
     networks:
       boilerplatejs:
         aliases:
