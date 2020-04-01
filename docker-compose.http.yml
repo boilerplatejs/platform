@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   boilerplatejs_ssl:
-    image: jrcs/letsencrypt-nginx-proxy-companion
+    image: jrcs/letsencrypt-nginx-proxy-companion:v1.12
     restart: unless-stopped
     volumes:
       - ${HTTP_VOLUME:-/tmp/nginx}/conf.d:/etc/nginx/conf.d
