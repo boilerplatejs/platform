@@ -5,6 +5,7 @@
 .bundles/
 images/
 log/
+export/
 *.iml
 package-lock.json
 npm-debug.log
