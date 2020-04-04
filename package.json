@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/BoilerplateJS/platform"
   },
+  "scripts": {
+    "export": "docker-compose exec boilerplatejs_host sh -c 'rm -rf /export/* && cp -rf /app/static/dist /export && cp -rf /app/static/theme /export'"
+  },
   "homepage": "https://vitruvian.tech",
   "keywords": [
     "react",
