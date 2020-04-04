@@ -7,6 +7,8 @@ services:
     depends_on:
       - boilerplatejs_data
     volumes:
+      # Export
+      - ./export:/export
       # Environment
       - ./.env:/app/.env
       - ./.ssh:/app/.ssh
